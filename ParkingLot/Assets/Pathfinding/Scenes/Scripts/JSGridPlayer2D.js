@@ -1,7 +1,11 @@
 #pragma strict
 
 class JSGridPlayer2D extends JSPath
-{
+{	
+	function Start(){
+	
+	}
+	
 	function Update()
 	{
 		FindPath();
@@ -26,7 +30,11 @@ class JSGridPlayer2D extends JSPath
     
     private function FindPath()
     {
-    	if (Input.GetButtonDown("Fire1"))
+    	
+    	
+    	//OLD MOVEMENT METHOD
+    	//Click to have the player path ot the mouse position
+    	/*if (Input.GetButtonDown("Fire1"))
         {
             var ray : Ray;
             ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
@@ -36,6 +44,6 @@ class JSGridPlayer2D extends JSPath
             {
                 CallJSPath(transform.position, hit.point);
             }      
-        }
+        }*/
     }
 }

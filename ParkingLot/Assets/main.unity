@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: []
-  JS: 1
+  JS: 0
 --- !u!114 &1323230134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,9 +672,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323230132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d572ded8e29d54dafe012057505e21, type: 3}
+  m_Script: {fileID: 11500000, guid: b500abe777dd15d469787f00fc004c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Path: []
+  JS: 0
 --- !u!23 &1323230135
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -727,7 +729,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1323230132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46791029, y: .524640262, z: 0}
+  m_LocalPosition: {x: -2.72000003, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
