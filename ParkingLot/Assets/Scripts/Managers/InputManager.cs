@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class InputManager : Singleton<InputManager> 
 {
-	#region Fields
-	#endregion 
+    #region Fields
+    #endregion
+    
+    #region Properties
+    ObjectBehavior[] objects;
+    #endregion
 
-
-	#region Properties
-	#endregion
-
-	protected InputManager() {}
+    protected InputManager() {}
 
 	void Awake()
 	{
@@ -22,12 +22,18 @@ public class InputManager : Singleton<InputManager>
 
 	void Update()
 	{
+        
+        if (Input.GetKeyDown("space")) {
+            foreach (ObjectBehavior o in objects) {
+                o.tick();
+            }
+        }
 		
 	}
 
 	void Init()
 	{
-		
-	}
+        objects = FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
+    }
 }
 
