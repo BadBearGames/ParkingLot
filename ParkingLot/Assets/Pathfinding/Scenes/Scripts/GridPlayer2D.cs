@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class GridPlayer2D : Pathfinding2D
 {
-	enum directions {north,east,south,west};
-	directions public currentDirection;
+	public enum directions {north,east,south,west};
+	public directions currentDirection;
 
 	void Start(){
 		if(currentDirection == null){
@@ -15,7 +15,7 @@ public class GridPlayer2D : Pathfinding2D
 
     void Update()
     {
-        FindPath();
+        //FindPath();
         if (Path.Count > 0)
         {
             Move();
@@ -24,18 +24,17 @@ public class GridPlayer2D : Pathfinding2D
 
     private void FindPath()
     {
-
 		if(currentDirection == directions.north){
-			FindPath(transform.position, transform.position + Vector3(0,1,0));
+			FindPath(transform.position, transform.position + new Vector3(0,1,0));
 		}
 		else if(currentDirection == directions.east){
-			FindPath(transform.position, transform.position + Vector3(1,0,0));
+			FindPath(transform.position, transform.position + new Vector3(1,0,0));
 		}
 		else if(currentDirection == directions.south){
-			FindPath(transform.position, transform.position + Vector3(0,-1,0));
+			FindPath(transform.position, transform.position + new Vector3(0,-1,0));
 		}
 		else if(currentDirection == directions.west){
-			FindPath(transform.position, transform.position + Vector3(-1,0,0));
+			FindPath(transform.position, transform.position + new Vector3(-1,0,0));
 		}
 		//OLD MOVEMENT METHOD
 
