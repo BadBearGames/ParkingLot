@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GridPlayer2D : Pathfinding2D
+public class Player : Pathfinding2D
 {
 	public enum directions {north,east,south,west};
 	public directions currentDirection;
