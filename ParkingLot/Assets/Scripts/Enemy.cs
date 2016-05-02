@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SimpleAI2D : Pathfinding2D 
+public class Enemy : Pathfinding2D 
 {
     public uint SearchPerSecond = 5;
     public Transform Player;
