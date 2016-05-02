@@ -267,10 +267,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: []
   JS: 0
-  SearchPerSecond: 5
-  Player: {fileID: 1323230138}
-  SearchDistance: 20
-  Speed: 20
+  speed: 20
+  movementType: 0
+  currentDirection: 0
+  lineMovement: {x: 0, y: 0}
+  seekTarget: {fileID: 0}
+  seekPosition: {x: 0, y: 0, z: 0}
+  searchPerSecond: 5
+  searchDistance: 20
+  useSearchDistance: 1
+  waypoints: {x: 0, y: 0}
+  patrolType: 0
 --- !u!23 &667418369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -650,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1323230133
 MonoBehaviour:
   m_ObjectHideFlags: 0
