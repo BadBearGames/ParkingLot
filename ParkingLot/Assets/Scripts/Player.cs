@@ -14,11 +14,26 @@ public class Player : Pathfinding2D
         {
             Move();
         } else {
-			FindPath();
+			//FindPath();
+			if(currentDirection == directions.north){
+				FindPath(transform.position, transform.position + new Vector3(0,1,0));
+			}
+			else if(currentDirection == directions.east){
+				FindPath(transform.position, transform.position + new Vector3(1,0,0));
+			}
+			else if(currentDirection == directions.south){
+				FindPath(transform.position, transform.position + new Vector3(0,-1,0));
+			}
+			else if(currentDirection == directions.west){
+				FindPath(transform.position, transform.position + new Vector3(-1,0,0));
+			}
 		}
     }
+	void Update(){
+		Tick ();
+	}
 
-    private void FindPath()
+   /* private void FindPath()
     {
 		if(currentDirection == directions.north){
 			FindPath(transform.position, transform.position + new Vector3(0,1,0));
@@ -45,6 +60,6 @@ public class Player : Pathfinding2D
             {
 				//FindPath(transform.position, hit.point);
 			}
-        }*/
-    }
+        }
+    }*/
 }

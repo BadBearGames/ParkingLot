@@ -40,45 +40,47 @@ public class Enemy : Pathfinding2D
         if (searchDistance < 0)
             searchDistance = 0;
 	}
-	
+	void Update(){
+		Tick();
+	}
 	void Tick () 
     {
-		//how we move
-		switch(movementType){
-		case movementTypes.directional:
-			//Directional movement
-			//We move in a straight line either north, east, south, or west
-			if(currentDirection == directions.north){
-				FindPath(transform.position, transform.position + new Vector3(0,2,0));
-			}
-			else if(currentDirection == directions.east){
-				FindPath(transform.position, transform.position + new Vector3(2,0,0));
-			}
-			else if(currentDirection == directions.south){
-				FindPath(transform.position, transform.position + new Vector3(0,-2,0));
-			}
-			else if(currentDirection == directions.west){
-				FindPath(transform.position, transform.position + new Vector3(-2,0,0));
-			}
-			break;
-		case movementTypes.line:
-			//Line movement
-			//We move in a straight line, set in the Inspector
-			FindPath(transform.position, transform.position + new Vector3(lineMovement.x, lineMovement.y, 0));
-			break;
-		case movementTypes.patrol:
-			//Patrol movement
-			//We move between set waypoints
-			break;
-		case movementTypes.seekPosition:
-			//Seek Position Movement
-			//We seek a position and move towards it
+		//save distance so we do not have to call it multiple times
+		tempDistance = Vector3.Distance(transform.position, seekPosition);
 
-			//save distance so we do not have to call it multiple times
-			tempDistance = Vector3.Distance(transform.position, seekPosition);
-			
-			//Check if we are able to search
-			if (search == true)	{
+		//Check if we are able to search
+		if (search == true)	{
+			//how we move
+			switch(movementType){
+			case movementTypes.directional:
+				//Directional movement
+				//We move in a straight line either north, east, south, or west
+				if(currentDirection == directions.north){
+					FindPath(transform.position, transform.position + new Vector3(0,2,0));
+				}
+				else if(currentDirection == directions.east){
+					FindPath(transform.position, transform.position + new Vector3(2,0,0));
+				}
+				else if(currentDirection == directions.south){
+					FindPath(transform.position, transform.position + new Vector3(0,-2,0));
+				}
+				else if(currentDirection == directions.west){
+					FindPath(transform.position, transform.position + new Vector3(-2,0,0));
+				}
+				break;
+			case movementTypes.line:
+				//Line movement
+				//We move in a straight line, set in the Inspector
+				FindPath(transform.position, new Vector3(lineMovement.x, lineMovement.y, 0));
+				break;
+			case movementTypes.patrol:
+				//Patrol movement
+				//We move between set waypoints
+				break;
+			case movementTypes.seekPosition:
+				//Seek Position Movement
+				//We seek a position and move towards it
+
 				//Start the time
 				StartCoroutine(SearchTimer());
 				
@@ -86,20 +88,13 @@ public class Enemy : Pathfinding2D
 				if (tempDistance < searchDistance || !useSearchDistance){
 					FindPath(transform.position, seekPosition);
 				}
-			}
-			break;
-		case movementTypes.seekTarget:
-			//Seek Target Movement
-			//We seek a target and move towards it
+				break;
+			case movementTypes.seekTarget:
+				//Seek Target Movement
+				//We seek a target and move towards it
 
-			//Make sure we have a target
-			if (seekTarget != null)
-			{
-				//save distance so we do not have to call it multiple times
-				tempDistance = Vector3.Distance(transform.position, seekTarget.position);
-				
-				//Check if we are able to search
-				if (search == true)	{
+				//Make sure we have a target
+				if (seekTarget != null){
 					//Start the time
 					StartCoroutine(SearchTimer());
 					
@@ -108,10 +103,9 @@ public class Enemy : Pathfinding2D
 						FindPath(transform.position, seekTarget.position);
 					}
 				}
-				
-			}
-			break;
-		} //end of switch statement
+				break;
+			} //end of switch statement
+		}
 
 		//Make sure that we actually got a path! then call the new movement method
 		if (Path.Count > 0)
@@ -134,7 +128,7 @@ public class Enemy : Pathfinding2D
         if (tempDistance < searchDistance + 1)
         {       
             //if we get close enough or we are closer then the indexed position, then remove the position from our path list, 
-            if (Vector3.Distance(transform.position, Path[0]) < 0.2F) 
+			if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(Path[0].x,Path[0].y)) < 0.2F) 
             {
                 Path.RemoveAt(0);
             }   
@@ -142,7 +136,7 @@ public class Enemy : Pathfinding2D
             if(Path.Count < 1)
                 return;
 
-            //First we will create a new vector ignoreing the depth (z-axiz).
+            //First we will create a new vector ignoring the depth (z-axiz).
             Vector3 ignoreZ = new Vector3(Path[0].x, Path[0].y, transform.position.z);
             
             //now move towards the newly created position

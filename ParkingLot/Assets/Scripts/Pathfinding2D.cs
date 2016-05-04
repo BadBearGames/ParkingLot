@@ -30,11 +30,12 @@ public class Pathfinding2D : MonoBehaviour
         if (Path.Count > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, Path[0], Time.deltaTime * 20F);
-            if (Vector3.Distance(transform.position, Path[0]) < 0.4F)
+			if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(Path[0].x,Path[0].y)) < 0.4F)
             {
                 Path.RemoveAt(0);
             }
         }
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     protected virtual void SetList(List<Vector3> path)

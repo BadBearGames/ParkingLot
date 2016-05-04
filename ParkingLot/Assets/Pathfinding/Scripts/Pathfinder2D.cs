@@ -281,12 +281,12 @@ public class Pathfinder2D : MonoBehaviour
                 currentNode = currentNode.parent;
             }
 
-            returnPath.Add(startPos);
+            //returnPath.Add(startPos);
             returnPath.Reverse();
 
             if (endPosValid)
             {
-                returnPath.Add(endPos);
+                //returnPath.Add(endPos);
             }
 
             if (returnPath.Count > 2 && endPosValid)
@@ -325,8 +325,10 @@ public class Pathfinder2D : MonoBehaviour
         int y = (MapStartPosition.y < 0F) ? Mathf.FloorToInt(((pos.y + Mathf.Abs(MapStartPosition.y)) / Tilesize)) : Mathf.FloorToInt((pos.y - MapStartPosition.y) / Tilesize);
 
 		//Stay in bounds!
-		x = Mathf.Clamp(x,0,Map.GetLength(0)-1);
-		y = Mathf.Clamp(y,0,Map.GetLength(1)-1);
+		if(x >= Map.GetLength(0) || y >= Map.GetLength(1)){
+			return null;
+		}
+		//y = Mathf.Clamp(y,0,Map.GetLength(1)-1);
 
         Node n = Map[x, y];
 
