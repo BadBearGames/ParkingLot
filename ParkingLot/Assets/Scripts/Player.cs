@@ -8,7 +8,7 @@ public class Player : Pathfinding2D
 	public directions currentDirection;
 
 
-    void Update()
+    void Tick()
     {
         if (Path.Count > 0)
         {

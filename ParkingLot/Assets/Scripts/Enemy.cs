@@ -41,7 +41,7 @@ public class Enemy : Pathfinding2D
             searchDistance = 0;
 	}
 	
-	void Update () 
+	void Tick () 
     {
 		//how we move
 		switch(movementType){

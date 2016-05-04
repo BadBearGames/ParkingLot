@@ -7,6 +7,10 @@ public class Pathfinding2D : MonoBehaviour
     public List<Vector3> Path = new List<Vector3>();
     public bool JS = false;
 
+	public virtual void Tick(){
+
+	}
+
     public void FindPath(Vector3 startPosition, Vector3 endPosition)
     {
         Pathfinder2D.Instance.InsertInQueue(startPosition, endPosition, SetList);

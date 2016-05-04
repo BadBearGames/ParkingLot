@@ -324,6 +324,10 @@ public class Pathfinder2D : MonoBehaviour
         int x = (MapStartPosition.x < 0F) ? Mathf.FloorToInt(((pos.x + Mathf.Abs(MapStartPosition.x)) / Tilesize)) : Mathf.FloorToInt((pos.x - MapStartPosition.x) / Tilesize);
         int y = (MapStartPosition.y < 0F) ? Mathf.FloorToInt(((pos.y + Mathf.Abs(MapStartPosition.y)) / Tilesize)) : Mathf.FloorToInt((pos.y - MapStartPosition.y) / Tilesize);
 
+		//Stay in bounds!
+		x = Mathf.Clamp(x,0,Map.GetLength(0)-1);
+		y = Mathf.Clamp(y,0,Map.GetLength(1)-1);
+
         Node n = Map[x, y];
 
         if (n.walkable)
