@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
 
 
 	//Objects
-	private Dictionary<ObjectType, List<Object>> objects;
+	private Dictionary<ObjectType, List<ObjectBehavior>> objects;
 	#endregion 
 
 
@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
 	public Dictionary<GameState, float> StateTimersMax { get { return stateTimersMax; } }
 
 	//Objects
-	public Dictionary<ObjectType, List<Object>> Objects;
+	public Dictionary<ObjectType, List<ObjectBehavior>> Objects;
 	#endregion
 
 	protected GameManager() {}
@@ -58,7 +58,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] == Mathf.Infinity)
 		{
-			//State does not depend on a timer, so execute here
+			//State does not depend on a timer, so execute here. Essentially just instantanous execution and then move to next state.
 			if (currentState == GameState.HumanTurn)
 			{
 				
@@ -89,6 +89,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		//Init Gamestate timers
 		stateTimersMax = new Dictionary<GameState, float>();
+		stateTimersMax.Add(GameState.None, Mathf.Infinity);
 		stateTimersMax.Add(GameState.Start, 3f);
 		stateTimersMax.Add(GameState.HumanTurn, Mathf.Infinity);
 		stateTimersMax.Add(GameState.EnemyTurn, Mathf.Infinity);
@@ -103,9 +104,15 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		//Init Objects
-		objects = new Dictionary<ObjectType, List<Object>>();
-		objects.Add(ObjectType.Human, new List<Object>());
-		objects.Add(ObjectType.Enemy, new List<Object>());
+		objects = new Dictionary<ObjectType, List<ObjectBehavior>>();
+		objects.Add(ObjectType.Human, new List<ObjectBehavior>());
+		objects.Add(ObjectType.Enemy, new List<ObjectBehavior>());
+		//For now, just add all objects to the human list
+		ObjectBehavior[] objectsArray = FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];//FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
+		for (int i = 0; i < objectsArray.Length; i++)
+		{
+			objects[ObjectType.Human].Add(objectsArray[i]);
+		}
 
 		//Init game state
 		currentState = GameState.None;

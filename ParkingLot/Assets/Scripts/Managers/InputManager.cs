@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class InputManager : Singleton<InputManager> 
 {
     #region Fields
+
     #endregion
     
     #region Properties
-    ObjectBehavior[] objects;
     #endregion
 
     protected InputManager() {}
@@ -23,8 +23,12 @@ public class InputManager : Singleton<InputManager>
 	void Update()
 	{
         
-        if (Input.GetKeyDown("space")) {
-            foreach (ObjectBehavior o in objects) {
+        if (Input.GetKeyDown("space")) 
+		{
+			
+			foreach (ObjectBehavior o in GameManager.Instance.Objects[ObjectType.Human]) 
+			{
+				//Putting all objects in the human list for now, change that later
                 o.tick();
             }
         }
@@ -33,7 +37,7 @@ public class InputManager : Singleton<InputManager>
 
 	void Init()
 	{
-        objects = FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
+        
     }
 }
 
