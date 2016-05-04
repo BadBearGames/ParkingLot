@@ -26,10 +26,10 @@ public class InputManager : Singleton<InputManager>
         if (Input.GetKeyDown("space")) 
 		{
 			
-			foreach (ObjectBehavior o in GameManager.Instance.Objects[ObjectType.Human]) 
+			foreach (Pathfinding2D o in GameManager.Instance.Objects[ObjectType.Human]) 
 			{
 				//Putting all objects in the human list for now, change that later
-                o.tick();
+                o.Tick();
             }
         }
 		

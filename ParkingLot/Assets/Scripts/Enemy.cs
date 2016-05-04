@@ -41,8 +41,10 @@ public class Enemy : Pathfinding2D
             searchDistance = 0;
 	}
 	
-	void Tick () 
+	public override void Tick () 
     {
+		base.Tick();
+
 		//how we move
 		switch(movementType){
 		case movementTypes.directional:

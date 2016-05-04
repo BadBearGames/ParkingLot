@@ -8,15 +8,16 @@ public class Player : Pathfinding2D
 	public directions currentDirection;
 
 
-    void Tick()
-    {
-        if (Path.Count > 0)
-        {
-            Move();
-        } else {
+	public override void Tick ()
+	{
+		base.Tick ();
+		if (Path.Count > 0)
+		{
+			Move();
+		} else {
 			FindPath();
 		}
-    }
+	}
 
     private void FindPath()
     {
