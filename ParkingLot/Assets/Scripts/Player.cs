@@ -10,6 +10,7 @@ public class Player : Pathfinding2D
 
     void Tick()
     {
+	base.Tick ();
         if (Path.Count > 0)
         {
             Move();
@@ -29,8 +30,9 @@ public class Player : Pathfinding2D
 			}
 		}
     }
+
 	void Update(){
-		Tick ();
+		//Tick ();
 	}
 
    /* private void FindPath()

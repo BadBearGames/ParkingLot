@@ -26,9 +26,8 @@ public class GameManager : Singleton<GameManager>
 	private Dictionary<GameState, float> stateTimers;
 	private Dictionary<GameState, float> stateTimersMax;
 
-
 	//Objects
-	private Dictionary<ObjectType, List<ObjectBehavior>> objects;
+	private Dictionary<ObjectType, List<Pathfinding2D>> objects;
 	#endregion 
 
 
@@ -39,7 +38,7 @@ public class GameManager : Singleton<GameManager>
 	public Dictionary<GameState, float> StateTimersMax { get { return stateTimersMax; } }
 
 	//Objects
-	public Dictionary<ObjectType, List<ObjectBehavior>> Objects;
+	public Dictionary<ObjectType, List<Pathfinding2D>> Objects { get { return objects; } }
 	#endregion
 
 	protected GameManager() {}
@@ -104,11 +103,11 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		//Init Objects
-		objects = new Dictionary<ObjectType, List<ObjectBehavior>>();
-		objects.Add(ObjectType.Human, new List<ObjectBehavior>());
-		objects.Add(ObjectType.Enemy, new List<ObjectBehavior>());
+		objects = new Dictionary<ObjectType, List<Pathfinding2D>>();
+		objects.Add(ObjectType.Human, new List<Pathfinding2D>());
+		objects.Add(ObjectType.Enemy, new List<Pathfinding2D>());
 		//For now, just add all objects to the human list
-		ObjectBehavior[] objectsArray = FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];//FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
+		Pathfinding2D[] objectsArray = FindObjectsOfType(typeof(Pathfinding2D)) as Pathfinding2D[];//FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
 		for (int i = 0; i < objectsArray.Length; i++)
 		{
 			objects[ObjectType.Human].Add(objectsArray[i]);

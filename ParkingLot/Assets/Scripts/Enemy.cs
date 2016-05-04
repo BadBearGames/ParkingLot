@@ -40,11 +40,14 @@ public class Enemy : Pathfinding2D
         if (searchDistance < 0)
             searchDistance = 0;
 	}
+
 	void Update(){
-		Tick();
+		//Tick();
 	}
-	void Tick () 
+	
+	public override void Tick () 
     {
+		base.Tick();
 		//save distance so we do not have to call it multiple times
 		tempDistance = Vector3.Distance(transform.position, seekPosition);
 
