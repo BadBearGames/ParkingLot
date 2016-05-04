@@ -267,10 +267,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: []
   JS: 0
-  SearchPerSecond: 5
-  Player: {fileID: 1323230138}
-  SearchDistance: 20
-  Speed: 5
+  speed: 20
+  movementType: 0
+  currentDirection: 0
+  lineMovement: {x: 0, y: 0}
+  seekTarget: {fileID: 0}
+  seekPosition: {x: 0, y: 0, z: 0}
+  searchPerSecond: 5
+  searchDistance: 20
+  useSearchDistance: 1
+  waypoints: {x: 0, y: 0}
+  patrolType: 0
 --- !u!23 &667418369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -403,6 +410,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &828136122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 828136127}
+  - 33: {fileID: 828136126}
+  - 65: {fileID: 828136125}
+  - 23: {fileID: 828136124}
+  - 114: {fileID: 828136123}
+  m_Layer: 0
+  m_Name: Car
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &828136123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828136122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197d97facb622b6478e5cacb3b7d251a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &828136124
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828136122}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 83bfe64ac7e8ba8449c1ec509a9315a2, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &828136125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828136122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &828136126
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828136122}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &828136127
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828136122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.04999995, y: -6.96000004, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &872229672
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,13 +738,14 @@ GameObject:
   - 23: {fileID: 1323230135}
   - 114: {fileID: 1323230134}
   - 114: {fileID: 1323230133}
+  - 54: {fileID: 1323230139}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1323230133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: []
   JS: 0
+  currentDirection: 2
 --- !u!23 &1323230135
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -729,11 +825,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1323230132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.72000003, y: 1.75, z: 0}
+  m_LocalPosition: {x: -2.95000005, y: 1.03999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!54 &1323230139
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323230132}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1555454266
 GameObject:
   m_ObjectHideFlags: 0
