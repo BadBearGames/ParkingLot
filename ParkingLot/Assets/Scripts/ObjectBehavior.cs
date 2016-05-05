@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Important code in this class has been merged into Pathfinding2D. Use that class for objects.
+/// Extend that class for any object. If it does not move, simply don't move it in code.
+/// </summary>
 public class ObjectBehavior : MonoBehaviour {
     
 	public float speed;

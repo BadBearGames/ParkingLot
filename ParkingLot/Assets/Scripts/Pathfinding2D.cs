@@ -65,4 +65,13 @@ public class Pathfinding2D : MonoBehaviour
             gameObject.SendMessage("GetJSPath", arr);
         }
     }
+
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("HIT!");
+		if (collision.gameObject.tag == "arrow")
+		{
+			transform.Rotate(0,90,0);
+		}
+	}
 }
