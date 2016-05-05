@@ -19,16 +19,20 @@ public class ObjectBehavior : MonoBehaviour {
         //transform.position += transform.forward * speed;
 
         //transform.Rotate(0, 90, 0);
+
+        if (Input.GetKeyDown("space")){
+            tick();
+        }
     }
 
     public void tick () {
         transform.position += transform.forward * speed;
-        Debug.Log("tick");
     }
 
-    void OnCollisionEnter(Collision collision){
+    void OnCollisionEnter(Collision col){
         Debug.Log("HIT!");
-        if (collision.gameObject.tag == "arrow") {
+        if (col.gameObject.tag == "Arrow"){
+            Debug.Log("HIT!");
             transform.Rotate(0,90,0);
         }
     }
