@@ -107,10 +107,16 @@ public class GameManager : Singleton<GameManager>
 		objects.Add(ObjectType.Human, new List<Pathfinding2D>());
 		objects.Add(ObjectType.Enemy, new List<Pathfinding2D>());
 		//For now, just add all objects to the human list
-		Pathfinding2D[] objectsArray = FindObjectsOfType(typeof(Pathfinding2D)) as Pathfinding2D[];//FindObjectsOfType(typeof(ObjectBehavior)) as ObjectBehavior[];
+		Pathfinding2D[] objectsArray = FindObjectsOfType(typeof(Player)) as Player[];
 		for (int i = 0; i < objectsArray.Length; i++)
 		{
 			objects[ObjectType.Human].Add(objectsArray[i]);
+		}
+		//Add enemies
+		objectsArray = FindObjectsOfType(typeof(Enemy)) as Enemy[];
+		for (int i = 0; i < objectsArray.Length; i++)
+		{
+			objects[ObjectType.Enemy].Add(objectsArray[i]);
 		}
 
 		//Init game state

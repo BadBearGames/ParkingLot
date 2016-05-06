@@ -2,66 +2,38 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum Direction {north,east,south,west};
+
 public class Player : Pathfinding2D
 {
-	public enum directions {north,east,south,west};
-	public directions currentDirection;
+	public Direction currentDirection = Direction.north;
 
 
-    void Tick()
+    public override void Tick()
     {
-	base.Tick ();
-        if (Path.Count > 0)
-        {
-            Move();
-        } else {
-			//FindPath();
-			if(currentDirection == directions.north){
-				FindPath(transform.position, transform.position + new Vector3(0,1,0));
-			}
-			else if(currentDirection == directions.east){
-				FindPath(transform.position, transform.position + new Vector3(1,0,0));
-			}
-			else if(currentDirection == directions.south){
-				FindPath(transform.position, transform.position + new Vector3(0,-1,0));
-			}
-			else if(currentDirection == directions.west){
-				FindPath(transform.position, transform.position + new Vector3(-1,0,0));
-			}
+		base.Tick ();
+		switch (currentDirection)
+		{
+		case Direction.east:
+			transform.Translate(new Vector3(1, 0, 0));
+			break;
+		case Direction.west:
+			transform.Translate(new Vector3(-1, 0, 0));
+			break;
+		case Direction.north:
+			transform.Translate(new Vector3(0, 1, 0));
+			break;
+		case Direction.south:
+			transform.Translate(new Vector3(0, -1, 0));
+			break;
 		}
     }
 
-	void Update(){
-		//Tick ();
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.collider.tag == "Tile")
+		{
+			currentDirection = col.collider.gameObject.GetComponent<Tile>().direction;
+		}
 	}
-
-   /* private void FindPath()
-    {
-		if(currentDirection == directions.north){
-			FindPath(transform.position, transform.position + new Vector3(0,1,0));
-		}
-		else if(currentDirection == directions.east){
-			FindPath(transform.position, transform.position + new Vector3(1,0,0));
-		}
-		else if(currentDirection == directions.south){
-			FindPath(transform.position, transform.position + new Vector3(0,-1,0));
-		}
-		else if(currentDirection == directions.west){
-			FindPath(transform.position, transform.position + new Vector3(-1,0,0));
-		}
-		//OLD MOVEMENT METHOD
-
-		//Click to have player path to mouse's position
-        /*if (Input.GetButtonDown("Fire1"))
-        {
-			//FindPath(transform.position, transform.position + new Vector3(0,1,0));
-			Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-				//FindPath(transform.position, hit.point);
-			}
-        }
-    }*/
 }

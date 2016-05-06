@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Arrow
+  - Wall
+  - Enemy
+  - Tile
   layers:
   - Default
   - TransparentFX
