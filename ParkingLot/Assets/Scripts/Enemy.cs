@@ -5,29 +5,33 @@ public class Enemy : Pathfinding2D
 {
 	public float speed = 20F;
 	private bool search = true;
+	public uint searchPerSecond = 5;
+	public float searchDistance = 20F;
 	private float tempDistance = 0F;
 
 	//Movement Enums
-	public enum movementTypes {directional,line,seekTarget,seekPosition,patrol};
+	public enum movementTypes {directional,line,seekTarget,seekPosition,patrol,noMovement};
 	public movementTypes movementType;
 
 	//Directional Movement Variables
+	//Enemy will move North, East, South or West in a straight line
 	public enum directions {north,east,south,west};
 	public directions currentDirection;
 
 	//Line Movement Variables
+	//Enemy will move in a predetermined straight line path (not contrained to NESW)
 	public Vector2 lineMovement;
 	
 	//Seek Movement Variables
+	//Enemy will seek a Target OR Position, this will most likely be related to the player
 	public Transform seekTarget;
 	public Vector3 seekPosition = Vector3.zero;
-	public uint searchPerSecond = 5;
-    public float searchDistance = 20F;
 	public bool useSearchDistance = true;
 
 	//Patrol Movement Variables
+	//Enemy will patrol on a set path between two or more points
 	public Vector2 waypoints;
-	public enum patrolTypes {backAndForth,lastToFirst};
+	public enum patrolTypes {backAndForth,lastToFirst};	//back and forth: A->B->C->B->A (repeat); Last to First: A->B->C->A (repeat)
 	public patrolTypes patrolType;
 
 	void Start () 

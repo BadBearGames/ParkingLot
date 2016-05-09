@@ -32,5 +32,10 @@ public class Tile : MonoBehaviour
 			arrowSprite.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
 			break;
 		}
+
+		//snap arrows to grid
+		Debug.Log(Pathfinder2D.Instance);
+		Node position = Pathfinder2D.Instance.FindClosestNode(transform.position);
+		transform.position = new Vector3(position.x, position.y, transform.position.z);
 	}
 }
