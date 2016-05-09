@@ -60,12 +60,16 @@ public class GameManager : Singleton<GameManager>
 			//State does not depend on a timer, so execute here. Essentially just instantanous execution and then move to next state.
 			if (currentState == GameState.HumanTurn)
 			{
-				
+				//Don't do anything because this is controlled in the hud
 			}
 			else if (currentState == GameState.EnemyTurn)
 			{
 				//call update on all enemies in the dictionary
-
+				foreach (Enemy enemy in objects[ObjectType.Enemy])
+				{
+					enemy.Tick();
+				}
+				AdvanceGameState(currentState);
 			}
 		}
 		if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] != Mathf.Infinity)
@@ -138,6 +142,14 @@ public class GameManager : Singleton<GameManager>
 			break;
 
 		case GameState.Start:
+			this.currentState = GameState.HumanTurn;
+			break;
+
+		case GameState.HumanTurn:
+			this.currentState = GameState.EnemyTurn;
+			break;
+
+		case GameState.EnemyTurn:
 			this.currentState = GameState.HumanTurn;
 			break;
 		}
