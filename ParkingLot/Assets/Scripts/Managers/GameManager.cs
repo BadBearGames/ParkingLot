@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 	private Dictionary<ObjectType, List<Pathfinding2D>> objects;
 	#endregion 
 
+	static GameManager _instance;
 
 	#region Properties
 	//Gamestate and timers
@@ -41,14 +42,28 @@ public class GameManager : Singleton<GameManager>
 	public Dictionary<ObjectType, List<Pathfinding2D>> Objects { get { return objects; } }
 	#endregion
 
+	//fixes the singleton error by forcing it to find a new instance of it upon level reset
+	//source: http://forum.unity3d.com/threads/static-variables-persist-for-life-of-program.80507/
+	public static GameManager Instance {
+		get {
+			if (_instance == null){
+				_instance = GameObject.Find("GameManager").GetComponent<GameManager>();
+			}
+			
+			return _instance;
+		}
+	}
+
+
 	protected GameManager() {}
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(this); //commented this out
 
 		Init();
 	}
+
 
 	/// <summary>
 	/// Constant update logic, the only realtime update loop

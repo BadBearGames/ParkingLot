@@ -10,7 +10,6 @@ class DragObject : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		//distance = Vector3.Distance(transform.position, Camera.main.transform.position);
 		dragging = true;
 	}
 
@@ -33,15 +32,8 @@ class DragObject : MonoBehaviour
 			//transform.position = rayPoint;
 		}
 		Vector3 pos = transform.position; 
-		pos.z = 0; 
+		pos.z = -1; 
 		transform.position= pos; 
 	}
-	/*
-	Vector3 ScreenPosToWorldPosByPlane(Vector2 screenPos, Plane plane) {
-		Ray ray=Camera.main.ScreenPointToRay(new Vector3(screenPos.x, screenPos.y, 1f));
-		float distance;
-		if(!plane.Raycast(ray, out distance))
-			throw new UnityException("did not hit plane", this);
-		return ray.GetPoint(distance);
-	}*/
+
 }
