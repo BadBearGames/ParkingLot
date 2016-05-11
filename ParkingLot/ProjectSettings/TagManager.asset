@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Tile
+  - Car
   layers:
   - Default
   - TransparentFX
