@@ -34,8 +34,8 @@ public class Tile : MonoBehaviour
 		}
 
 		//snap arrows to grid
-		Debug.Log(Pathfinder2D.Instance);
+		/*Debug.Log(Pathfinder2D.Instance);
 		Node position = Pathfinder2D.Instance.FindClosestNode(transform.position);
-		transform.position = new Vector3(position.x, position.y, transform.position.z);
+		transform.position = new Vector3(position.x, position.y, transform.position.z);*/
 	}
 }
