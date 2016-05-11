@@ -1,16 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : Pathfinding2D 
 {
-	public float speed = 20F;
-	private bool search = true;
-	public uint searchPerSecond = 5;
-	public float searchDistance = 20F;
-	private float tempDistance = 0F;
+	public float speed = 20F;				//how fast we move
+	private bool search = true;				//used to see if we can search
+	public uint searchPerSecond = 5;		//how often we search (save resources by not searching every tick)
+	private float tempDistance = 0F;		//our distance away from the target (saved to save resources)
 
 	//Movement Enums
-	public enum movementTypes {directional,line,seekTarget,seekPosition,patrol,noMovement};
+	public enum movementTypes {directional,line,seekNearestPlayer,seekPosition,patrol,noMovement};
 	public movementTypes movementType;
 
 	//Directional Movement Variables
@@ -24,9 +24,10 @@ public class Enemy : Pathfinding2D
 	
 	//Seek Movement Variables
 	//Enemy will seek a Target OR Position, this will most likely be related to the player
-	public Transform seekTarget;
-	public Vector3 seekPosition = Vector3.zero;
-	public bool useSearchDistance = true;
+	private List<GameObject> playerList = new List<GameObject>(); 
+	private Transform seekTarget;
+	public bool useSearchDistance = true;	//whether we are going to use a search distance or not
+	public float searchDistance = 20F;		//how far we can see around us to search
 
 	//Patrol Movement Variables
 	//Enemy will patrol on a set path between two or more points
@@ -36,6 +37,14 @@ public class Enemy : Pathfinding2D
 
 	void Start () 
     {
+		//populate player list
+		playerList.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+
+		//set the target we are seeking
+		if(playerList != null){
+			seekTarget = playerList[0].transform;
+		}
+
         //Make sure that we dont divide by 0 in our search timer coroutine
         if (searchPerSecond == 0)
             searchPerSecond = 1;
@@ -52,8 +61,6 @@ public class Enemy : Pathfinding2D
 	public override void Tick () 
     {
 		base.Tick();
-		//save distance so we do not have to call it multiple times
-		tempDistance = Vector3.Distance(transform.position, seekPosition);
 
 		//Check if we are able to search
 		if (search == true)	{
@@ -75,42 +82,54 @@ public class Enemy : Pathfinding2D
 					FindPath(transform.position, transform.position + new Vector3(-2,0,0));
 				}
 				break;
+
 			case movementTypes.line:
 				//Line movement
 				//We move in a straight line, set in the Inspector
-				FindPath(transform.position, new Vector3(lineMovement.x, lineMovement.y, 0));
+				FindPath(transform.position, new Vector3(transform.position.x+lineMovement.x, transform.position.y+lineMovement.y, 0));
 				break;
+
 			case movementTypes.patrol:
 				//Patrol movement
 				//We move between set waypoints
 				break;
-			case movementTypes.seekPosition:
-				//Seek Position Movement
-				//We seek a position and move towards it
 
-				//Start the time
-				StartCoroutine(SearchTimer());
-				
-				//Now check the distance to the player, if it is within the distance it will search for a new path
-				if (tempDistance < searchDistance || !useSearchDistance){
-					FindPath(transform.position, seekPosition);
-				}
-				break;
-			case movementTypes.seekTarget:
-				//Seek Target Movement
-				//We seek a target and move towards it
+			case movementTypes.seekNearestPlayer:
+				//Seek Nearest Player Movement
+				//We seek the nearest player and move towards it
 
-				//Make sure we have a target
-				if (seekTarget != null){
+				//Make sure we have a list of targets
+				if (playerList != null || playerList.Count > 0){
 					//Start the time
 					StartCoroutine(SearchTimer());
-					
+
+					//if playerList has only one player, it's our target
+					if(playerList.Count == 1){
+						seekTarget = playerList[0].transform;
+						tempDistance = Vector3.Distance(transform.position, seekTarget.position);
+					} 
+					//if playerList has more than one player see which is the closest
+					else {
+						//change seektarget to the nearest player
+						foreach(GameObject player in playerList){
+							//check if this player is closer than our previous target
+							if(Vector3.Distance(transform.position, player.transform.position) < tempDistance){
+								//if we are closer, seek this target now
+								seekTarget = player.transform;
+								tempDistance = Vector3.Distance(transform.position, seekTarget.position);
+							}
+						}
+					}
+
 					//Now check the distance to the player, if it is within the distance it will search for a new path
 					if (tempDistance < searchDistance || !useSearchDistance){
 						FindPath(transform.position, seekTarget.position);
 					}
+				} else{
+					Debug.Log("No gameobjects tagged with Player.");
 				}
 				break;
+
 			} //end of switch statement
 		}
 
