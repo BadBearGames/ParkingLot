@@ -21,7 +21,7 @@ class DragObject : MonoBehaviour
 
 	void Update()
 	{
-		if (dragging)
+		if (dragging && GameManager.Instance.CurrentState == GameState.HumanTurn)
 		{
 			//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			//Vector3 rayPoint = ray.GetPoint(distance);

@@ -20,14 +20,6 @@ public class InputManager : Singleton<InputManager>
 		Init();
 	}
 
-	void Update()
-	{
-		if (Input.GetKeyDown("space") && GameManager.Instance.CurrentState == GameState.HumanTurn) 
-		{
-			AdvancePlayerTurn();
-		}
-	}
-
 	public void AdvancePlayerTurn()
 	{
 		foreach (Player o in GameManager.Instance.Objects[ObjectType.Human]) 
