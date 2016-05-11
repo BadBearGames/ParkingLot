@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
 	#region Fields
 	//Gamestate and timers
 	private GameState currentState;
+	
 	private Dictionary<GameState, float> stateTimers;
 	private Dictionary<GameState, float> stateTimersMax;
 
@@ -33,7 +34,7 @@ public class GameManager : Singleton<GameManager>
 
 	#region Properties
 	//Gamestate and timers
-	public GameState CurrentState { get { return currentState; } }
+	public GameState CurrentState { get { return currentState; } set { currentState = value; } }
 	public Dictionary<GameState, float> StateTimers { get { return stateTimers; } }
 	public Dictionary<GameState, float> StateTimersMax { get { return stateTimersMax; } }
 

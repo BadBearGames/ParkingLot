@@ -22,14 +22,17 @@ public class InputManager : Singleton<InputManager>
 
 	public void AdvancePlayerTurn()
 	{
-		foreach (Player o in GameManager.Instance.Objects[ObjectType.Human]) 
+		if (GameManager.Instance.CurrentState == GameState.HumanTurn || GameManager.Instance.CurrentState == GameState.Start)
 		{
-			//Putting all objects in the human list for now, change that later
-			o.Tick();
-		}
+			foreach (Player o in GameManager.Instance.Objects[ObjectType.Human]) 
+			{
+				//Putting all objects in the human list for now, change that later
+				o.Tick();
+			}
 
-		//Let the game manager know to move forward
-		GameManager.Instance.AdvanceGameState(GameState.HumanTurn);
+			//Let the game manager know to move forward
+			GameManager.Instance.AdvanceGameState(GameState.HumanTurn);
+		}
 	}
 
 	void Init()

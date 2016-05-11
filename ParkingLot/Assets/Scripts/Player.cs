@@ -36,4 +36,17 @@ public class Player : Pathfinding2D
 			currentDirection = col.collider.gameObject.GetComponent<Tile>().direction;
 		}
 	}
+
+	public void Die()
+	{
+		//Kill this player
+		GameManager.Instance.Objects[ObjectType.Human].Remove(this);
+		Destroy(gameObject);
+
+		if (GameManager.Instance.Objects[ObjectType.Human].Count == 0)
+		{
+			GameManager.Instance.CurrentState = GameState.GameOver;
+			GameManager.Instance.AdvanceGameState(GameState.GameOver);
+		}
+	}
 }

@@ -5,12 +5,10 @@ public class Goal : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		//Debug.Log ("I'm hit!");
-
-		//if the gameObject that hit the trigger is a player
-		if (other.gameObject.name == "Player")
+		if (other.gameObject.tag == "Player")
 		{	
-			Application.LoadLevel("Level Select");//loads the Level Slect Screen for now
+			GameManager.Instance.CurrentState = GameState.Win;
+			GameManager.Instance.AdvanceGameState(GameState.Win);
 		}
 	}
 }

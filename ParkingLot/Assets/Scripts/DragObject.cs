@@ -33,7 +33,7 @@ class DragObject : MonoBehaviour
 			//transform.position = rayPoint;
 		}
 		Vector3 pos = transform.position; 
-		pos.z = 0; 
+		pos.z = -1;
 		transform.position= pos; 
 	}
 	/*

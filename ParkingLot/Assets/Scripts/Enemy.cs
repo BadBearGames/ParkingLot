@@ -150,4 +150,13 @@ public class Enemy : Pathfinding2D
             transform.position = Vector3.MoveTowards(transform.position, ignoreZ, Time.deltaTime * speed);  
         }
     }
+
+	/// <summary>
+	/// Kill that player
+	/// </summary>
+	/// <param name="other">Other.</param>
+	void OnTriggerEnter(Collider other)
+	{
+		other.gameObject.GetComponent<Player>().Die();
+	}
 }
