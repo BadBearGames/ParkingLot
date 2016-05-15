@@ -116,7 +116,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -349.49997, y: -111.75}
+  m_AnchoredPosition: {x: -349.5, y: -111.75}
   m_SizeDelta: {x: 653, y: 110.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7945452
@@ -151,10 +151,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Your job is to guide at least one person (red spheres) through the hazards
-    of the parking lot into their car. Both the players and enemies (green boxes)
-    move each turn. You can finish your turn by hitting SPACE or the "Finish Turn"
-    button.
+  m_Text: Your job is to guide at least one person (red spheres) into their car while
+    avoiding enemies (green boxes) wandering throughout the parking lot. You can toggle
+    movement with SPACE or the "Play/Pause" button.
 --- !u!222 &7945453
 CanvasRenderer:
   m_ObjectHideFlags: 0
