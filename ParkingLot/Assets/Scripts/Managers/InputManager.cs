@@ -11,13 +11,27 @@ public class InputManager : Singleton<InputManager>
     #region Properties
     #endregion
 
+	static InputManager _instance;
+
     protected InputManager() {}
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(this);
 
 		Init();
+	}
+
+	//fixes the singleton error by forcing it to find a new instance of it upon level reset
+	//source: http://forum.unity3d.com/threads/static-variables-persist-for-life-of-program.80507/
+	public static InputManager Instance {
+		get {
+			if (_instance == null){
+				_instance = GameObject.Find("InputManager").GetComponent<InputManager>();
+			}
+
+			return _instance;
+		}
 	}
 
 	public void AdvancePlayerTurn()
