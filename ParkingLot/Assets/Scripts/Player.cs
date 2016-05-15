@@ -45,6 +45,7 @@ public class Player : Pathfinding2D
 
 		if (GameManager.Instance.Objects[ObjectType.Human].Count == 0)
 		{
+			GameManager.Instance.AutoPlay = false;
 			GameManager.Instance.CurrentState = GameState.GameOver;
 			GameManager.Instance.AdvanceGameState(GameState.GameOver);
 		}

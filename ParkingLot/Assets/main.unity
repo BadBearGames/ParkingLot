@@ -289,8 +289,8 @@ MonoBehaviour:
   JS: 0
   speed: 20
   searchPerSecond: 5
-  movementType: 5
-  currentDirection: 0
+  movementType: 2
+  currentDirection: 1
   lineMovement: {x: 0, y: 0}
   useSearchDistance: 1
   searchDistance: 20
@@ -947,8 +947,8 @@ MonoBehaviour:
   JS: 0
   speed: 20
   searchPerSecond: 5
-  movementType: 5
-  currentDirection: 0
+  movementType: 2
+  currentDirection: 1
   lineMovement: {x: 0, y: 0}
   useSearchDistance: 1
   searchDistance: 20
@@ -1779,7 +1779,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Finish Turn
+  m_Text: AutoPlay
 --- !u!222 &1230093556
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2143,6 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerText: {fileID: 1352084948}
+  autoPlayText: {fileID: 1230093555}
 --- !u!1 &1461548553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,7 +2574,7 @@ GameObject:
   - 114: {fileID: 1913675963}
   - 114: {fileID: 1913675962}
   m_Layer: 5
-  m_Name: Finish Turn Button
+  m_Name: AutoPlay Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2637,7 +2638,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82496446}
-        m_MethodName: AdvancePlayerTurn
+        m_MethodName: ToggleAutoPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

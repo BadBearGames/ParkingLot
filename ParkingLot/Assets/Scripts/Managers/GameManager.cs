@@ -21,6 +21,8 @@ public enum ObjectType
 public class GameManager : Singleton<GameManager> 
 {
 	#region Fields
+	private bool autoPlay;
+
 	//Gamestate and timers
 	private GameState currentState;
 	
@@ -34,6 +36,8 @@ public class GameManager : Singleton<GameManager>
 	static GameManager _instance;
 
 	#region Properties
+	public bool AutoPlay { get { return autoPlay; } set { autoPlay = value; } }
+
 	//Gamestate and timers
 	public GameState CurrentState { get { return currentState; } set { currentState = value; } }
 	public Dictionary<GameState, float> StateTimers { get { return stateTimers; } }
@@ -71,7 +75,7 @@ public class GameManager : Singleton<GameManager>
 	/// </summary>
 	void Update()
 	{
-		if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] == Mathf.Infinity)
+		/*if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] == Mathf.Infinity)
 		{
 			//State does not depend on a timer, so execute here. Essentially just instantanous execution and then move to next state.
 			if (currentState == GameState.HumanTurn)
@@ -87,8 +91,8 @@ public class GameManager : Singleton<GameManager>
 				}
 				AdvanceGameState(currentState);
 			}
-		}
-		if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] != Mathf.Infinity)
+		}*/
+		if (stateTimers.ContainsKey(currentState) && stateTimers[currentState] != Mathf.Infinity && autoPlay)
 		{
 			if (stateTimers[currentState] > 0f)
 			{
@@ -109,9 +113,9 @@ public class GameManager : Singleton<GameManager>
 		//Init Gamestate timers
 		stateTimersMax = new Dictionary<GameState, float>();
 		stateTimersMax.Add(GameState.None, Mathf.Infinity);
-		stateTimersMax.Add(GameState.Start, 3f);
-		stateTimersMax.Add(GameState.HumanTurn, Mathf.Infinity);
-		stateTimersMax.Add(GameState.EnemyTurn, Mathf.Infinity);
+		stateTimersMax.Add(GameState.Start, 0.1f);
+		stateTimersMax.Add(GameState.HumanTurn, 0.4f);
+		stateTimersMax.Add(GameState.EnemyTurn, 0.4f);
 		stateTimersMax.Add(GameState.GameOver, 3f);
 		stateTimersMax.Add(GameState.Win, 3f);
 
@@ -162,10 +166,20 @@ public class GameManager : Singleton<GameManager>
 			break;
 
 		case GameState.HumanTurn:
+			foreach (Player o in GameManager.Instance.Objects[ObjectType.Human]) 
+			{
+				//Putting all objects in the human list for now, change that later
+				o.Tick();
+			}
 			this.currentState = GameState.EnemyTurn;
 			break;
 
 		case GameState.EnemyTurn:
+			//call update on all enemies in the dictionary
+			foreach (Enemy enemy in objects[ObjectType.Enemy])
+			{
+				enemy.Tick();
+			}
 			this.currentState = GameState.HumanTurn;
 			break;
 		}

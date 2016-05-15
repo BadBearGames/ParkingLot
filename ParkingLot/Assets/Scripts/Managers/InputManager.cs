@@ -34,9 +34,9 @@ public class InputManager : Singleton<InputManager>
 		}
 	}
 
-	public void AdvancePlayerTurn()
+	public void ToggleAutoPlay()
 	{
-		if (GameManager.Instance.CurrentState == GameState.HumanTurn || GameManager.Instance.CurrentState == GameState.Start)
+		/*if (GameManager.Instance.CurrentState == GameState.HumanTurn || GameManager.Instance.CurrentState == GameState.Start)
 		{
 			foreach (Player o in GameManager.Instance.Objects[ObjectType.Human]) 
 			{
@@ -46,7 +46,9 @@ public class InputManager : Singleton<InputManager>
 
 			//Let the game manager know to move forward
 			GameManager.Instance.AdvanceGameState(GameState.HumanTurn);
-		}
+		}*/
+
+		GameManager.Instance.AutoPlay = !GameManager.Instance.AutoPlay;
 	}
 
 	void Init()

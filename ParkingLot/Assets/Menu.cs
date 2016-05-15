@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour
 {
 
 	public Text centerText;
+	public Text autoPlayText;
 	
 	// Update is called once per frame
 	void Update () 
@@ -23,6 +24,15 @@ public class Menu : MonoBehaviour
 		else
 		{
 			centerText.gameObject.SetActive(false);
+		}
+
+		if (GameManager.Instance.AutoPlay)
+		{
+			autoPlayText.text = "Pause";
+		}
+		else
+		{
+			autoPlayText.text = "Play";
 		}
 	}
 }

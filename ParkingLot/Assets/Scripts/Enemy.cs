@@ -99,30 +99,33 @@ public class Enemy : Pathfinding2D
 				//We seek the nearest player and move towards it
 
 				//Make sure we have a list of targets
-				if (playerList != null || playerList.Count > 0){
+				if (GameManager.Instance.Objects[ObjectType.Human].Count > 0){
 					//Start the time
 					StartCoroutine(SearchTimer());
+					tempDistance = Mathf.Infinity;
 
 					//if playerList has only one player, it's our target
-					if(playerList.Count == 1){
-						seekTarget = playerList[0].transform;
+					if(GameManager.Instance.Objects[ObjectType.Human].Count == 1){
+						seekTarget = GameManager.Instance.Objects[ObjectType.Human][0].transform;
 						tempDistance = Vector3.Distance(transform.position, seekTarget.position);
 					} 
 					//if playerList has more than one player see which is the closest
 					else {
 						//change seektarget to the nearest player
-						foreach(GameObject player in playerList){
+						foreach(Pathfinding2D player in GameManager.Instance.Objects[ObjectType.Human])
+						{
 							//check if this player is closer than our previous target
-							if(Vector3.Distance(transform.position, player.transform.position) < tempDistance){
+							if(Vector3.Distance(transform.position, player.gameObject.transform.position) < tempDistance){
 								//if we are closer, seek this target now
-								seekTarget = player.transform;
+								seekTarget = player.gameObject.transform;
 								tempDistance = Vector3.Distance(transform.position, seekTarget.position);
 							}
 						}
 					}
 
 					//Now check the distance to the player, if it is within the distance it will search for a new path
-					if (tempDistance < searchDistance || !useSearchDistance){
+					if (tempDistance < searchDistance || !useSearchDistance)
+					{
 						FindPath(transform.position, seekTarget.position);
 					}
 				} else{
