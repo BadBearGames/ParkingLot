@@ -1,69 +1,57 @@
-Initialize engine version: 5.2.3f1 (f3d16a1fa2dd)
+Initialize engine version: 5.3.1f1 (cc9cbbcc37b4)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 680 (ID=0x1180)
-    Vendor:   NVIDIA
-    VRAM:     1989 MB
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  1.132 seconds
-desktop: 1920x1080 60Hz; virtual: 3840x1137 at 0,-57
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.096 seconds
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\mandwband\Desktop\College Stuff\Casual\ParkingLot\ParkingLot\PakingLot_Data\Managed\System.dll (this message is harmless)
+desktop: 1360x768 60Hz; virtual: 1360x768 at 0,0
 <RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: \\banner.main.ad.rit.edu\students\ecl3369\IGMProfile\Desktop\GitHub\ParkingLot\ParkingLot\PakingLot_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 1.095402 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 145c -> priority: 1 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.044872 ms
+  Thread -> id: 2378 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.465438 ms
 
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 224.
-Total: 0.153315 ms (FindLiveObjects: 0.012515 ms CreateObjectMapping: 0.007964 ms MarkObjects: 0.128000 ms  DeleteObjects: 0.004551 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 221.
+Total: 0.324081 ms (FindLiveObjects: 0.029605 ms CreateObjectMapping: 0.032368 ms MarkObjects: 0.248291 ms  DeleteObjects: 0.013026 ms)
 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.487538 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.721189 ms
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 471.
-Total: 0.234097 ms (FindLiveObjects: 0.013084 ms CreateObjectMapping: 0.013937 ms MarkObjects: 0.203662 ms  DeleteObjects: 0.003128 ms)
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 468.
+Total: 0.433424 ms (FindLiveObjects: 0.038289 ms CreateObjectMapping: 0.030000 ms MarkObjects: 0.358818 ms  DeleteObjects: 0.005921 ms)
 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 22.540819 ms
+HIT!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 473.
-Total: 0.227840 ms (FindLiveObjects: 0.013653 ms CreateObjectMapping: 0.011093 ms MarkObjects: 0.199964 ms  DeleteObjects: 0.002844 ms)
+HIT!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.589938 ms
+HIT!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 473.
-Total: 0.240355 ms (FindLiveObjects: 0.013653 ms CreateObjectMapping: 0.011377 ms MarkObjects: 0.211911 ms  DeleteObjects: 0.003128 ms)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 18.061384 ms
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 229.
-Total: 0.307769 ms (FindLiveObjects: 0.008533 ms CreateObjectMapping: 0.007964 ms MarkObjects: 0.211342 ms  DeleteObjects: 0.079360 ms)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.451129 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 473.
-Total: 0.242915 ms (FindLiveObjects: 0.013084 ms CreateObjectMapping: 0.011377 ms MarkObjects: 0.214755 ms  DeleteObjects: 0.003128 ms)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 17.635857 ms
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 229.
-Total: 0.327395 ms (FindLiveObjects: 0.008248 ms CreateObjectMapping: 0.008248 ms MarkObjects: 0.233529 ms  DeleteObjects: 0.077084 ms)
+HIT!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 

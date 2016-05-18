@@ -29,11 +29,11 @@ public class Player : Pathfinding2D
 		}
     }
 
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter(Collider other)
 	{
-		if (col.collider.tag == "Tile")
+		if (other.tag == "Tile")
 		{
-			currentDirection = col.collider.gameObject.GetComponent<Tile>().direction;
+			currentDirection = other.gameObject.GetComponent<Tile>().direction;
 		}
 	}
 
